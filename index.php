@@ -1,5 +1,9 @@
 <!-- tampilan data Buku -->
-<?php include 'koneksi.php'; ?>
+<?php 
+error_reporting(E_ALL ^ E_NOTICE);
+ini_set('display_errors', 1);
+include 'koneksi.php'; 
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
