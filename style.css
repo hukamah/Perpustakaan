@@ -96,20 +96,5 @@ body.login-page {
 }
 
 .form-check label {
-    color: #0707fc; /* Warna hitam untuk teks checkbox */
-}
-
-
-
-/* Gaya untuk Halaman Dashboard */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-.dashboard-page {
-    display: flex;
+    color: red; 
 }

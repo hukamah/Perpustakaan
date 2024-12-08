@@ -1,3 +1,36 @@
+<?php
+session_start();
+
+
+require 'koneksi.php';
+
+if (isset($_SESSION['username'])) {
+    header("location: db_admin.php");
+    exit();
+}
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $password = md5($_POST['password']); // Hashing password
+
+        $stmt = $koneksi->prepare("SELECT * FROM pengguna WHERE username = ? AND password = ?");
+        $stmt->bind_param('ss', $username, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $_SESSION['username'] = $username;
+        header("Location: db_admin.php");
+    } else {
+        $error = "Username atau password salah.";
+    }
+    $stmt->close();
+}
+
+?>
+
 <!doctype html>
 <html lang="id">
 <head>
@@ -9,10 +42,9 @@
 
     <!-- Custom CSS -->
     <link href="style.css" rel="stylesheet"> 
-    <link rel="icon" href="img/daftar buku.png" type="image/png">
+    <link rel="icon" href="img/gambar.png" type="image/png">
 
-
-    <title>PERPUSTAKAAN</title>
+    <title>Login - Sistem Informasi Perpustakaan</title>
 </head>
 <body class="login-page">
     <div class="container">
@@ -22,10 +54,10 @@
                 <h1 class="card-title">SMK BINA BANGSA</h1>
             </div>
             <div class="card-text">
-                <form action="db_admin.html" method="get">
+                <form method="POST">
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
@@ -33,7 +65,11 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
-                </div>
+                <?php
+                if ($error) {
+                    echo $error;
+                }
+                ?>
             </div>
         </div>
     </div>
