@@ -1,8 +1,13 @@
 <?php
-// Include koneksi database atau file lainnya jika diperlukan
+session_start();
 include 'koneksi.php'; 
 include 'sidebar.php';
 ?>
+<?php
+    if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
+    echo "Anda tidak berhak mengakses halaman ini.";
+    exit; }
+    ?>
 
 <!DOCTYPE html>
 <html lang="id">
@@ -41,6 +46,9 @@ include 'sidebar.php';
             </form>
         </div>
     </div>
-
+    <hr class="text-light">
+    <div class="text-center">
+    <p class="mb-0">&copy; 2025 SMK BINA BANGSA KERSANA</p>
+    </div>
 </body>
 </html>

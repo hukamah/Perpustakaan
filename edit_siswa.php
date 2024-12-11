@@ -1,6 +1,9 @@
 <?php
+session_start();
 include 'koneksi.php';
-
+if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
+    echo "Anda tidak berhak mengakses halaman ini.";
+    exit; }
 // Cek jika parameter 'nis' ada di URL
 if (isset($_GET['id_siswa'])) {
     $id_siswa = $_GET['id_siswa'];
@@ -72,6 +75,10 @@ if (isset($_POST['update'])) {
             </div>
             <button type="submit" name="update" class="btn btn-primary">Update</button>
         </form>
+        <hr class="text-light">
+        <div class="text-center">
+        <p class="mb-0">&copy; 2025 SMK BINA BANGSA KERSANA</p>
+       </div>
     </di>
 </body>
 </html>

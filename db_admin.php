@@ -1,5 +1,5 @@
 <?php
- include 'cek_auth.php';
+include 'cek_auth.php';
 include 'koneksi.php'; 
 include 'sidebar.php'; // Memanggil sidebar
 ?>
@@ -24,8 +24,16 @@ include 'sidebar.php'; // Memanggil sidebar
     display: flex;
 }
 .container {
-    margin-top: 80px; 
-         }
+    margin-left: 260px; /* Lebar sidebar */
+    padding: 20px;
+    width: calc(100% - 260px); /* Sisa ruang setelah sidebar */
+    max-width: 100%; /* Pastikan tidak ada batas maksimal */
+    min-width: 300px; /* Tentukan batas minimal jika diperlukan */
+}
+
+
+
+
  header {
      background-color: #4CAF50;
      padding: 30px;
@@ -88,12 +96,12 @@ include 'sidebar.php'; // Memanggil sidebar
             <div class="card blue">
                 <img src="img/daftar buku.png" alt="buku" class="card-icon">
                 <b><p>Data Buku</p></b>
-                <a href="index.php" class="small-box-footer">Lihat Data <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="buku.php" class="small-box-footer">Lihat Data <i class="fas fa-arrow-circle-right"></i></a>
             </div>
             <div class="card orange">
                 <img src="img/group.png" alt="Data" class="card-icon">
                 <b><p>Data Siswa</p></b>
-                <a href="index_2.php" class="small-box-footer">Lihat Data <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="siswa.php" class="small-box-footer">Lihat Data <i class="fas fa-arrow-circle-right"></i></a>
             </div>
             <div class="card green">
                 <img src="img/pengembalian.png" alt="Pengembalian" class="card-icon">
@@ -107,6 +115,9 @@ include 'sidebar.php'; // Memanggil sidebar
             </div>
         </div>
     </div>
-
+    <hr class="text-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 SMK BINA BANGSA KERSANA</p>
+            </div>
 </body>
 </html>

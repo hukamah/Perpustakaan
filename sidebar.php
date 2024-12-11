@@ -31,15 +31,15 @@
 }
 
 .sidebar .profile img {
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     display: block;
     margin: 0 auto;
 }
 
 .sidebar .role {
-    background-color: orange;
+    background-color:red;
     color: #fff;
     padding: 10px;
     margin-top: 10px;
@@ -141,8 +141,8 @@
 <!-- Sidebar -->
 <div class="sidebar">
     <div class="profile">
-        <img src="img/profile.png" alt="Profile">
-        <b><div class="role">Administrator</div></b>
+        <img src="img/gambar.png" alt="Gambar">
+        <b><div class="role">SMK Bina Bangsa</div></b>
     </div>
     <nav>
         <ul>
@@ -150,7 +150,7 @@
             <li><a href="data_buku.php"><i class="fas fa-book"></i> Tambah Data Buku</a></li>
             <li><a href="data_siswa.php"><i class="fas fa-user-graduate"></i> Tambah Data Siswa</a></li>
             <li><a href="peminjaman_buku.php"><i class="fas fa-book-reader"></i> Form Peminjaman</a></li>
-            <li><a href="pengembalian.php"><i class="fas fa-undo-alt"></i> Data Pengembalian</a></li>
+            <li><a href="data_pengguna.php"><i class="fas fa-user-graduate"></i> Pengguna Sistem</a></li>
             <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </nav>

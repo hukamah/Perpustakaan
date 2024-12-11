@@ -1,6 +1,9 @@
 <?php
+session_start();
 include 'koneksi.php';
-
+if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
+echo "Anda tidak berhak mengakses halaman ini.";
+exit; }
 // Ambil ID dari URL
 $id = $_GET['id'];
 
@@ -101,11 +104,13 @@ if (isset($_POST['update'])) {
                 <option value="dikembalikan" <?= $data['status'] == 'dikembalikan' ? 'selected' : ''; ?>>Dikembalikan</option>
             </select>
         </div>
-
-        <!-- Tombol Submit -->
         <button type="submit" name="update" class="btn btn-primary">Update</button>
         <a href="daftar_peminjaman.php" class="btn btn-secondary">Kembali</a>
     </form>
+    <hr class="text-light">
+    <div class="text-center">
+      <p class="mb-0">&copy; 2025 SMK BINA BANGSA KERSANA</p>
+</div>
 </div>
 </body>
 </html>

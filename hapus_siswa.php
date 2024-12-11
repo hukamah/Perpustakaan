@@ -1,6 +1,9 @@
 <?php
+session_start();
 include 'koneksi.php';
-
+if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
+    echo "Anda tidak berhak mengakses halaman ini.";
+    exit; }
 // Cek jika parameter 'nis' ada di URL
 if (isset($_GET['id_siswa'])) {
     $id_siswa = $_GET['id_siswa'];

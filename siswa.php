@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
+    echo "Anda tidak berhak mengakses halaman ini.";
+    exit; }
 include 'koneksi.php'; 
 include 'sidebar.php'; 
 ?>
@@ -85,5 +89,9 @@ include 'sidebar.php';
         $('#dataSiswa').DataTable();
     });
     </script>
+    <hr class="text-light">
+    <div class="text-center">
+    <p class="mb-0">&copy; 2025 SMK BINA BANGSA KERSANA</p>
+    </div>
 </body>
 </html>

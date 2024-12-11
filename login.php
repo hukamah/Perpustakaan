@@ -1,11 +1,12 @@
 <?php
 session_start();
 
-
+// Koneksi ke database
 require 'koneksi.php';
 
+// Jika sudah login, langsung alihkan ke halaman admin
 if (isset($_SESSION['username'])) {
-    header("location: db_admin.php");
+    header("Location: db_admin.php");
     exit();
 }
 
@@ -13,23 +14,31 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
-    $password = md5($_POST['password']); // Hashing password
+    $password = md5($_POST['password']); // Hash password input dengan md5()
 
-        $stmt = $koneksi->prepare("SELECT * FROM pengguna WHERE username = ? AND password = ?");
-        $stmt->bind_param('ss', $username, $password);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    // Query untuk memeriksa username dan password
+    $stmt = $koneksi->prepare("SELECT * FROM pengguna WHERE username = ? AND password = ?");
+    $stmt->bind_param('ss', $username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        $_SESSION['username'] = $username;
+        $data_session = $result->fetch_assoc();
+
+        // Set session untuk user yang berhasil login
+        $_SESSION['username'] = $data_session['username'];
+        $_SESSION['roles'] = $data_session['roles'];
+
+        // Redirect ke halaman admin
         header("Location: db_admin.php");
+        exit();
     } else {
         $error = "Username atau password salah.";
     }
     $stmt->close();
 }
-
 ?>
+
 
 <!doctype html>
 <html lang="id">

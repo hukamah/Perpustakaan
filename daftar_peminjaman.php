@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
+    echo "Anda tidak berhak mengakses halaman ini.";
+    exit; }
 include 'koneksi.php'; 
 include 'sidebar.php'; 
 
@@ -27,6 +31,7 @@ $result = mysqli_query($koneksi, $query);
 <div class="container mt-5" style="margin-left: 250px;">
     <h2 class="text-center">Daftar Peminjaman Buku</h2>
     <table class="table table-striped table-bordered">
+    
         <thead>
             <tr>
                 <th>No</th>
@@ -66,8 +71,12 @@ $result = mysqli_query($koneksi, $query);
             $no++;
         }
         ?>
+        </div>
         </tbody>
     </table>
 </div>
+<footer class="text-center mt-5">
+    <p>&copy; 2025 SMK Bina Bangsa</p>
+</footer>
 </body>
 </html>

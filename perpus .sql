@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Des 2024 pada 03.22
+-- Waktu pembuatan: 11 Des 2024 pada 17.33
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -49,8 +49,7 @@ INSERT INTO `buku` (`id`, `id_buku`, `judul`, `pengarang`, `penerbit`, `tahun`) 
 (126, '202506', 'Pemograman dasar', 'bahari', 'erlangga', 1990),
 (127, '202507', 'bahasa indonesia', 'ahmad', 'dahlan', 1995),
 (128, '202508', 'Kisah Nabi', 'Naful Muzaki', 'akbar', 1992),
-(129, '202509', 'bahasa pemograman', 'nur ichsan', 'erlangga', 1998),
-(130, '', '', '', '', 0);
+(129, '202509', 'bahasa pemograman', 'nur ichsan', 'erlangga', 1998);
 
 -- --------------------------------------------------------
 
@@ -97,11 +96,12 @@ CREATE TABLE `peminjaman` (
 --
 
 INSERT INTO `peminjaman` (`id`, `id_buku`, `id_siswa`, `tanggal_pinjam`, `tanggal_kembali`, `status`) VALUES
-(15, '202509', 20250004, '2024-11-20', '2024-11-20', 'dikembalikan'),
-(16, '202502', 20250005, '2024-11-20', '2024-11-21', 'dikembalikan'),
-(17, '202503', 20250002, '2024-11-25', '2024-11-25', 'dikembalikan'),
-(18, '202505', 20250004, '2024-11-27', '2024-11-30', 'dipinjam'),
-(19, '202508', 20250004, '2024-12-09', '2024-12-18', 'dipinjam');
+(15, '202509', 20250004, '2024-11-20', '2024-12-09', 'dikembalikan'),
+(16, '202502', 20250005, '2024-11-20', '2024-12-09', 'dipinjam'),
+(17, '202503', 20250002, '2024-11-25', '2024-11-25', 'dipinjam'),
+(18, '202505', 20250004, '2024-11-27', '2024-12-09', 'dikembalikan'),
+(19, '202508', 20250004, '2024-12-09', '2024-12-09', 'dikembalikan'),
+(20, '202502', 20250001, '2024-12-09', '2024-12-09', 'dikembalikan');
 
 -- --------------------------------------------------------
 
@@ -113,15 +113,17 @@ CREATE TABLE `pengguna` (
   `id_pengguna` int(11) NOT NULL,
   `nama_pengguna` varchar(100) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `roles` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `pengguna`
 --
 
-INSERT INTO `pengguna` (`id_pengguna`, `nama_pengguna`, `username`, `password`) VALUES
-(8, 'Hikmah', 'hikmah', '202cb962ac59075b964b07152d234b70');
+INSERT INTO `pengguna` (`id_pengguna`, `nama_pengguna`, `username`, `password`, `roles`) VALUES
+(11, 'siswa', 'siswa', '202cb962ac59075b964b07152d234b70', 'siswa'),
+(16, 'admin', 'admin', '202cb962ac59075b964b07152d234b70', 'admin');
 
 -- --------------------------------------------------------
 
@@ -224,13 +226,13 @@ ALTER TABLE `buku`
 -- AUTO_INCREMENT untuk tabel `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `siswa`

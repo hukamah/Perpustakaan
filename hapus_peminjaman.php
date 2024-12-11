@@ -1,6 +1,9 @@
 <?php
+session_start();
 include 'koneksi.php';
-
+if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
+    echo "Anda tidak berhak mengakses halaman ini.";
+    exit; }
 // Cek apakah ada ID yang dikirimkan melalui URL
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

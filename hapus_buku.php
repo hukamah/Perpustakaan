@@ -1,7 +1,9 @@
 <?php
-// Sambungkan ke database
+session_start();
 include 'koneksi.php'; 
-
+if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
+    echo "Anda tidak berhak mengakses halaman ini.";
+    exit; }
 // Periksa apakah parameter 'id' dikirimkan
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id_buku = $_GET['id'];

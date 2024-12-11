@@ -57,6 +57,9 @@ include 'sidebar.php';
                                 <a href='hapus_buku.php?id={$row['id_buku']}' class='btn btn-danger' onclick='return confirm(\"Apakah Anda yakin ingin menghapus buku ini?\")'>
                                     <i class='fas fa-trash'></i> Hapus
                                 </a>
+                                <a href='peminjaman_buku.php?id_buku={$row['id_buku']}' class='btn btn-primary'>
+                                <i class='fas fa-book'></i> Pinjam
+                                </a>
                             </td>
                         </tr>";
                         $no++;
@@ -74,5 +77,9 @@ include 'sidebar.php';
             $('#dataBuku').DataTable();
         });
     </script>
+    <hr class="text-light">
+    <div class="text-center">
+        <p class="mb-0">&copy; 2025 SMK BINA BANGSA KERSANA</p>
+   </div>
 </body>
 

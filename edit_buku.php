@@ -1,6 +1,6 @@
 <?php
+session_start();
 include 'koneksi.php';
-
 // Cek apakah id ada di URL
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -13,6 +13,10 @@ if (isset($_GET['id'])) {
     exit;
 }
 
+    if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
+    echo "Anda tidak berhak mengakses halaman ini.";
+    exit; }
+  
 // Cek jika form telah disubmit untuk melakukan update
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Ambil data dari form
@@ -72,6 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
+        <hr class="text-light">
+        <div class="text-center">
+             <p class="mb-0">&copy; 2025 SMK BINA BANGSA KERSANA</p>
+        </div>
     </div>
 </body>
 </html>
