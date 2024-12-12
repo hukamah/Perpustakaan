@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "minx6158";
+$password = "3mWu4aqNzEFQ81";
 $dbname = "perpus";
 
 // Membuat koneksi
