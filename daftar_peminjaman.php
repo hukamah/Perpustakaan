@@ -5,7 +5,7 @@ if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
     exit; }
 include 'koneksi.php'; 
 include 'sidebar.php'; 
-
+include 'cek_auth.php';
 $query = "SELECT p.id, b.judul, s.nama, p.tanggal_pinjam, p.tanggal_kembali, p.status
           FROM peminjaman p
           JOIN buku b ON p.id_buku = b.id_buku

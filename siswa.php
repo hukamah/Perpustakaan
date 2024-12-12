@@ -4,7 +4,8 @@ if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
     echo "Anda tidak berhak mengakses halaman ini.";
     exit; }
 include 'koneksi.php'; 
-include 'sidebar.php'; 
+include 'sidebar.php';
+include 'cek_auth.php'; 
 ?>
 <!DOCTYPE html>
 <html lang="id">

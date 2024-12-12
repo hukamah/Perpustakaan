@@ -2,6 +2,7 @@
 session_start();
 include 'koneksi.php'; 
 include 'sidebar.php';
+include 'cek_auth.php';
 ?>
 <?php
     if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {

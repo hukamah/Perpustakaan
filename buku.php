@@ -2,7 +2,8 @@
 error_reporting(E_ALL ^ E_NOTICE);
 ini_set('display_errors', 1);
 include 'koneksi.php';
-include 'sidebar.php'; 
+include 'sidebar.php';
+include 'cek_auth.php'; 
 ?>
 <!DOCTYPE html>
 <html lang="id">

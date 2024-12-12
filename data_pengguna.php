@@ -5,6 +5,7 @@ if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
     exit; }
 include 'sidebar.php'; 
 include 'koneksi.php';
+include 'cek_auth.php';
 // Query untuk mengambil data pengguna
 $sql = "SELECT * FROM pengguna";
 $result = $koneksi->query($sql);
