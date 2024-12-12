@@ -35,7 +35,7 @@ $result_siswa = mysqli_query($koneksi, $query_siswa);
 
         .card {
             width: 100%;
-            max-width: 1500px; /* Maksimal lebar card */
+            max-width: 1600px; /* Maksimal lebar card */
             margin: 0 auto; /* Center card secara horizontal */
         }
 

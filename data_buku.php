@@ -1,5 +1,4 @@
 <?php
-session_start();
 include 'koneksi.php'; 
 include 'sidebar.php';
 include 'cek_auth.php';

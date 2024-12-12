@@ -1,10 +1,12 @@
 <?php
-session_start();
 include 'koneksi.php'; 
 include 'sidebar.php'; 
 include 'cek_auth.php';
 ?>
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
     if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
     echo "Anda tidak berhak mengakses halaman ini.";
     exit; }

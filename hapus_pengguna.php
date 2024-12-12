@@ -2,8 +2,9 @@
 session_start();
 if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
     echo "Anda tidak berhak mengakses halaman ini.";
-    exit; }
-    include 'koneksi.php';
+    exit;
+}
+include 'koneksi.php';
 if (isset($_GET['username'])) {
     $username = $_GET['username'];
 
@@ -19,3 +20,13 @@ if (isset($_GET['username'])) {
 
 $koneksi->close();
 ?>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hapus Pengguna</title>
+    <link rel="icon" href="img/gambar.png" type="image/png"> <!-- Menambahkan favicon di sini -->
+</head>
+</html>
