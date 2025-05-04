@@ -31,8 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Eksekusi query
   if (mysqli_stmt_execute($stmt)) {
+
     // Redirect ke halaman data siswa jika berhasil
-    header("Location: index_2.php");
+    header("Location: siswa.php");
     exit();
   } else {
     // Tampilkan pesan kesalahan jika gagal

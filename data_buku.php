@@ -16,7 +16,7 @@ include 'cek_auth.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Buku</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="icon" href="img/gambar.png" type="image/png">
+    <link rel="icon" href="img/Gambar.png" type="image/png">
     <!-- Main Content -->
     <div class="main-content">
         <div class="container mt-5">

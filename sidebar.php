@@ -149,8 +149,9 @@
             <li><a href="db_admin.php" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
             <li><a href="data_buku.php"><i class="fas fa-book"></i> Tambah Data Buku</a></li>
             <li><a href="data_siswa.php"><i class="fas fa-user-graduate"></i> Tambah Data Siswa</a></li>
-            <li><a href="peminjaman_buku.php"><i class="fas fa-book-reader"></i> Form Peminjaman</a></li>
+            <li><a href="peminjaman_buku.php"><i class="fas fa-book-reader"></i> Tambah Data Peminjaman</a></li>
             <li><a href="data_pengguna.php"><i class="fas fa-user-graduate"></i> Pengguna Sistem</a></li>
+            <li><a href="tambah_berita.php"><i class="fa fa-info-circle"></i> Update Informasi</a></li>
             <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </nav>

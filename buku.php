@@ -13,12 +13,12 @@ include 'cek_auth.php';
     <title>Data Buku</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-    <link rel="icon" href="img/gambar.png" type="image/png">
+    <link rel="icon" href="img/Gambar.png" type="image/png">
 </head>
 <style> 
 .table thead{
     background-color: green;
-    color: white;
+    color: white; 
    
 }
 </style>

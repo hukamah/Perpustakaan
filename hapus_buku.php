@@ -1,6 +1,6 @@
 <?php
-session_start();
 include 'koneksi.php'; 
+session_start();
 if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
     echo "Anda tidak berhak mengakses halaman ini.";
     exit; }
@@ -16,7 +16,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     if (mysqli_query($koneksi, $query)) {
         // Redirect kembali ke halaman utama setelah berhasil menghapus data
-        header("Location: index.php");
+        header("Location: buku.php");
         exit(); // Pastikan skrip berhenti setelah redirect
     } else {
         echo "Error menghapus data: " . mysqli_error($koneksi);

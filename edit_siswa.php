@@ -29,7 +29,7 @@ if (isset($_POST['update'])) {
     $update_query = "UPDATE siswa SET Nama = '$nama', Kelas = '$kelas', Jurusan = '$jurusan', No_hp = '$no_hp', Alamat = '$alamat' WHERE id_siswa = '$id_siswa'";
 
     if (mysqli_query($koneksi, $update_query)) {
-        header('Location: index_2.php'); // Arahkan kembali ke halaman daftar siswa
+        header('Location: siswa.php'); // Arahkan kembali ke halaman daftar siswa
     } else {
         echo "Error: " . $update_query . "<br>" . mysqli_error($koneksi);
     }

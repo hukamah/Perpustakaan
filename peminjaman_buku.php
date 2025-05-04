@@ -94,10 +94,17 @@ $result_siswa = mysqli_query($koneksi, $query_siswa);
                             <?php } ?>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="id_siswa">Nama Siswa</label>
-                        <input type="text" id="siswa_input" name="id_siswa" class="form-control" placeholder="Ketik Nama Siswa" required>
-                    </div>
+                    <select name="id_siswa" class="form-control" required>
+                    <option value="">Pilih Siswa</option>
+                  <?php 
+                 $query_siswa = "SELECT * FROM siswa";
+                 $result_siswa = mysqli_query($koneksi, $query_siswa);
+                 while ($row_siswa = mysqli_fetch_assoc($result_siswa)) {
+                 echo "<option value='{$row_siswa['id_siswa']}'>{$row_siswa['Nama']} ({$row_siswa['id_siswa']})</option>";
+                 }
+                 ?>
+                </select>
+
                     <script>
                         $(document).ready(function() {
                             var siswaData = [
@@ -116,6 +123,10 @@ $result_siswa = mysqli_query($koneksi, $query_siswa);
                             });
                         });
                     </script>
+                    <div class="form-group">
+                <label for="jumlah">Jumlah Buku</label>
+                <input type="number" name="jumlah" class="form-control" min="1" required>
+            </div>
                     <div class="form-group">
                         <label for="tanggal_pinjam">Tanggal Pinjam</label>
                         <input type="date" name="tanggal_pinjam" class="form-control" required>

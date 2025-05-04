@@ -10,7 +10,7 @@ $tahun = $_POST['tahun'];
 $sql = "INSERT INTO buku (id_buku, judul, pengarang, penerbit, tahun) VALUES ('$id_buku', '$judul', '$pengarang', '$penerbit', '$tahun')";
 
 if (mysqli_query($koneksi, $sql)) {
-    header("Location: index.php");
+    header("Location: buku.php");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($koneksi);
 }

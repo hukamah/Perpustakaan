@@ -1,23 +1,30 @@
 <?php
 session_start();
-include 'koneksi.php';
+include 'koneksi.php'; 
 if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
     echo "Anda tidak berhak mengakses halaman ini.";
     exit; }
-// Cek jika parameter 'nis' ada di URL
-if (isset($_GET['id_siswa'])) {
-    $id_siswa = $_GET['id_siswa'];
+// Periksa apakah parameter 'id' dikirimkan
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id_siswa = $_GET['id'];
 
-    // Query untuk menghapus data siswa berdasarkan NIS
+    // Amankan ID buku
+    $id_siswa = mysqli_real_escape_string($koneksi, $id_siswa);
+
+    // Query untuk menghapus data berdasarkan ID buku
     $query = "DELETE FROM siswa WHERE id_siswa = '$id_siswa'";
 
-    // Menjalankan query
     if (mysqli_query($koneksi, $query)) {
-        header('Location: index_2.php'); // Arahkan kembali ke halaman daftar siswa
+        // Redirect kembali ke halaman utama setelah berhasil menghapus data
+        header("Location: siswa.php");
+        exit(); // Pastikan skrip berhenti setelah redirect
     } else {
-        echo "Error: " . $query . "<br>" . mysqli_error($koneksi);
+        echo "Error menghapus data: " . mysqli_error($koneksi);
     }
 } else {
-    echo " id tidak ditemukan!";
+    echo "ID buku tidak valid.";
 }
+
+// Tutup koneksi
+mysqli_close($koneksi);
 ?>

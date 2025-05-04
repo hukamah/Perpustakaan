@@ -14,13 +14,13 @@ if (isset($_GET['id'])) {
     // Eksekusi query dan cek apakah berhasil
     if (mysqli_query($koneksi, $query)) {
         // Redirect ke halaman daftar peminjaman setelah penghapusan
-        header('Location: peminjaman_buku.php');
+        header('Location: daftar_peminjaman.php');
         exit;
     } else {
         // Jika gagal, tampilkan pesan error
         echo "Error: " . mysqli_error($koneksi);
     }
 } else {
-    echo "ID tidak ditemukan!";
+    echo "Berhasil dihapus!";
 }
 ?>
