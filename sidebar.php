@@ -1,158 +1,163 @@
-<link href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-<link rel="icon" href="img/group.png" type="image/png">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perpustakaan SMK Bina Bangsa</title>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link rel="icon" href="img/Gambar.png" type="image/png" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-<style>
-/* CSS Sidebar */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+    body {
+      display: flex;
+      min-height: 100vh;
+      background-color: #f0f2f5;
+    }
 
-/* Sidebar Styling */
-.sidebar {
-    width: 250px;
-    background-color: #222d32;
-    height: 100vh;
-    position: fixed;
-    left: -250px; /* Tersembunyi secara default */
-    top: 0;
-    transition: left 0.3s ease;
-    z-index: 1001;
-}
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(180deg, #2c3e50, #34495e);
+      height: 100vh;
+      color: #ecf0f1;
+      position: fixed;
+      left: 0;
+      top: 0;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      overflow-y: auto;
+    }
 
-.sidebar .profile {
-    text-align: center;
-    padding: 20px;
-}
+    .sidebar .profile {
+      text-align: center;
+      padding: 30px 20px 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
 
-.sidebar .profile img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto;
-}
+    .sidebar .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto;
+      display: block;
+    }
 
-.sidebar .role {
-    background-color:red;
-    color: #fff;
-    padding: 10px;
-    margin-top: 10px;
-    width: 100%; /* Lebar penuh sidebar */
-    text-align: center;
-    border-radius: 5px;
-}
+    .sidebar .role {
+      background-color: #e74c3c;
+      color: #fff;
+      margin-top: 20px;
+      padding: 8px;
+      font-weight: 600;
+    }
 
-.sidebar nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+    .sidebar nav ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
 
-.sidebar nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    display: block;
-    width: 100%; /* Lebar penuh sidebar */
-    text-align: left; /* Rata kiri */
-    padding: 10px 10px 10px 20px; /* Spasi untuk ikon */
-    font-weight: bold;
-    background-color: #222d32;
-    transition: background-color 0.3s, color 0.3s;
-}
+    .sidebar nav ul li a {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      color: #ecf0f1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      border-left: 4px solid transparent;
+      cursor: pointer;
+    }
 
-.sidebar nav ul li a.active {
-    color: #fff;
-    font-weight: bold;
-}
+    .sidebar nav ul li a i {
+      margin-right: 15px;
+      font-size: 18px;
+    }
 
-.sidebar nav ul li a:hover {
-    background-color: #1a2226;
-    color: grey;
-}
+    .sidebar nav ul li a:hover {
+      background-color: #3b4c5a;
+      color: #ffffff;
+      border-left: 4px solid #e67e22;
+    }
 
-/* Sidebar Toggle */
-#sidebar-toggle:checked ~ .sidebar {
-    left: 0;
-}
+    /* Dropdown */
+    .dropdown-container {
+      display: none;
+      flex-direction: column;
+      padding-left: 40px;
+      background-color: #2f3e4e;
+    }
 
-/* Toggle Button */
-.toggle-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    cursor: pointer;
-    z-index: 1002;
-}
+    .dropdown-btn.active + .dropdown-container {
+      display: flex;
+    }
 
-.menu,
-.close {
-    display: inline-block;
-    font-size: 20px;
-    color: #222d32;
-}
+    .dropdown-btn::after {
+      content: "\f107";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      margin-left: auto;
+      transition: transform 0.3s;
+    }
 
-.close {
-    display: none;
-}
+    .dropdown-btn.active::after {
+      transform: rotate(180deg);
+    }
 
-/* Show Close Icon When Sidebar Active */
-#sidebar-toggle:checked + .toggle-btn .menu {
-    display: none;
-}
+    .dropdown-container a {
+      font-size: 14px;
+      padding: 8px 0;
+    }
+  </style>
+</head>
+<body>
 
-#sidebar-toggle:checked + .toggle-btn .close {
-    display: inline-block;
-}
-
-/* Main Content */
-.main-content {
-    margin-left: 0;
-    padding: 20px;
-    transition: margin-left 0.3s ease;
-    background-color: #f4f4f4;
-    flex-grow: 1;
-}
-
-#sidebar-toggle:checked ~ .main-content {
-    margin-left: 250px; /* Sama dengan lebar sidebar */
-}
-
-.container {
-    margin-top: 80px;
-    width: calc(100% - 250px);
-}
-</style>
-
-<!-- Checkbox untuk Toggle -->
-<input type="checkbox" id="sidebar-toggle" hidden>
-
-<!-- Tombol Toggle -->
-<label for="sidebar-toggle" class="toggle-btn">
-    <span class="menu"><i class="fas fa-bars"></i></span>
-    <span class="close"><i class="fas fa-times"></i></span>
-</label>
-
-<!-- Sidebar -->
-<div class="sidebar">
+  <!-- Sidebar -->
+  <div class="sidebar">
     <div class="profile">
-        <img src="img/gambar.png" alt="Gambar">
-        <b><div class="role">SMK Bina Bangsa</div></b>
+      <img src="img/Gambar.png" alt="Foto Profil" />
+      <div class="role">Admin</div>
     </div>
     <nav>
-        <ul>
-            <li><a href="db_admin.php" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
-            <li><a href="data_buku.php"><i class="fas fa-book"></i> Tambah Data Buku</a></li>
-            <li><a href="data_siswa.php"><i class="fas fa-user-graduate"></i> Tambah Data Siswa</a></li>
-            <li><a href="peminjaman_buku.php"><i class="fas fa-book-reader"></i> Tambah Data Peminjaman</a></li>
-            <li><a href="data_pengguna.php"><i class="fas fa-user-graduate"></i> Pengguna Sistem</a></li>
-            <li><a href="tambah_berita.php"><i class="fa fa-info-circle"></i> Update Informasi</a></li>
-            <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-        </ul>
+      <ul>
+        <li><a href="db_admin.php"><i class="fas fa-home"></i> Dashboard</a></li>
+        <li><a href="data_buku.php"><i class="fas fa-book"></i> Tambah Data Buku</a></li>
+        <li><a href="data_siswa.php"><i class="fas fa-user-graduate"></i> Tambah Data Siswa</a></li>
+        <li><a href="peminjaman_buku.php"><i class="fas fa-book-reader"></i> Peminjaman</a></li>
+        <li><a href="data_pengguna.php"><i class="fas fa-users-cog"></i> Pengguna Sistem</a></li>
+
+        <!-- Dropdown Setting -->
+        <li>
+          <a class="dropdown-btn"><i class="fas fa-cogs"></i> Setting</a>
+          <div class="dropdown-container">
+            <a href="tambah_ebook.php"><i class="fas fa-file-pdf"></i> Kelola eBook</a>
+            <a href="tambah_berita.php"><i class="fas fa-newspaper"></i> Kelola Berita</a>
+            <a href="background.php"><i class="fas fa-images"></i> Kelola Background</a>
+            <a href="edit_visimisi.php"><i class="fas fa-book"></i> Kelola Visi & Misi</a>
+             <a href="pengumuman.php"><i class="fas fa-bullhorn"></i> Kelola Pengumuman</a>
+          </div>
+        </li>
+
+        <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
     </nav>
-</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const dropdowns = document.querySelectorAll(".dropdown-btn");
+    dropdowns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("active");
+      });
+    });
+  </script>
+
+</body>
+</html>

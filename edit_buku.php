@@ -27,10 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $judul = $_POST['judul'];
     $pengarang = $_POST['pengarang'];
     $penerbit = $_POST['penerbit'];
-    $tahun = $_POST['tahun'];
+    $jumlah= $_POST['jumlah'];
 
     // Query untuk memperbarui data buku
-    $query = "UPDATE buku SET id_buku='$id_buku', judul='$judul', pengarang='$pengarang', penerbit='$penerbit', tahun='$tahun' WHERE id='$id'";
+    $query = "UPDATE buku SET id_buku='$id_buku', judul='$judul', pengarang='$pengarang', penerbit='$penerbit', jumlah='$jumlah' WHERE id='$id'";
 
     // Eksekusi query
     if (mysqli_query($koneksi, $query)) {
@@ -106,8 +106,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <input type="text" name="penerbit" id="penerbit" class="form-control" value="<?php echo $row['penerbit']; ?>" required>
                             </div>
                             <div class="mb-3">
-                                <label for="tahun" class="form-label">Tahun</label>
-                                <input type="number" name="tahun" id="tahun" class="form-control" value="<?php echo $row['tahun']; ?>" required>
+                                <label for="tahun" class="form-label">Jumlah</label>
+                                <input type="number" name="jumlah" id="jumlah" class="form-control" value="<?php echo $row['jumlah']; ?>" required>
                             </div>
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary">

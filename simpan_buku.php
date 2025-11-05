@@ -1,13 +1,15 @@
 <?php
 include 'koneksi.php';
 
-$id_buku = $_POST['id_buku'];
-$judul = $_POST['judul'];
+$id_buku   = $_POST['id_buku'];
+$judul     = $_POST['judul'];
 $pengarang = $_POST['pengarang'];
-$penerbit = $_POST['penerbit'];
-$tahun = $_POST['tahun'];
+$penerbit  = $_POST['penerbit'];
+$tahun     = $_POST['tahun'];      // <--- ini belum ada sebelumnya
+$jumlah    = $_POST['jumlah'];     // <--- ini sudah ada, tinggal masukkan ke query
 
-$sql = "INSERT INTO buku (id_buku, judul, pengarang, penerbit, tahun) VALUES ('$id_buku', '$judul', '$pengarang', '$penerbit', '$tahun')";
+$sql = "INSERT INTO buku (id_buku, judul, pengarang, penerbit, tahun, jumlah) 
+        VALUES ('$id_buku', '$judul', '$pengarang', '$penerbit', '$tahun', '$jumlah')";
 
 if (mysqli_query($koneksi, $sql)) {
     header("Location: buku.php");
@@ -16,4 +18,3 @@ if (mysqli_query($koneksi, $sql)) {
 }
 
 mysqli_close($koneksi);
-

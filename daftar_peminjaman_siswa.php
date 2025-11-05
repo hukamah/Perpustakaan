@@ -1,7 +1,7 @@
 <?php
+include 'cek_auth.php';     // Panggil pertama agar session dimulai sebelum ada output
 include 'koneksi.php'; 
-include 'sidebar_siswa.php'; 
-include 'cek_auth.php';
+include 'sidebar_siswa.php';
 
 // Query untuk mengambil data peminjaman
 $query_peminjaman = "SELECT p.id, b.judul, s.nama, p.jumlah, p.tanggal_pinjam, p.tanggal_kembali, p.status

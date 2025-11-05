@@ -22,11 +22,11 @@ if (isset($_POST['update'])) {
     $nama = $_POST['nama'];
     $kelas = $_POST['kelas'];
     $jurusan = $_POST['jurusan'];
-    $no_hp = $_POST['no_hp'];
+    $no_whatsapp = $_POST['no_whatsapp'];
     $alamat = $_POST['alamat'];
 
     // Query untuk memperbarui data siswa
-    $update_query = "UPDATE siswa SET Nama = '$nama', Kelas = '$kelas', Jurusan = '$jurusan', No_hp = '$no_hp', Alamat = '$alamat' WHERE id_siswa = '$id_siswa'";
+    $update_query = "UPDATE siswa SET nama = '$nama', kelas = '$kelas', jurusan = '$jurusan', no_whatsapp = '$no_whatsapp', alamat = '$alamat' WHERE id_siswa = '$id_siswa'";
 
     if (mysqli_query($koneksi, $update_query)) {
         header('Location: siswa.php'); // Arahkan kembali ke halaman daftar siswa
@@ -55,23 +55,23 @@ if (isset($_POST['update'])) {
             </div>
             <div class="form-group">
                 <label for="nama">Nama</label>
-                <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $row['Nama']; ?>" required>
+                <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $row['nama']; ?>" required>
             </div>
             <div class="form-group">
                 <label for="kelas">Kelas</label>
-                <input type="text" class="form-control" id="kelas" name="kelas" value="<?php echo $row['Kelas']; ?>" required>
+                <input type="text" class="form-control" id="kelas" name="kelas" value="<?php echo $row['kelas']; ?>" required>
             </div>
             <div class="form-group">
                 <label for="jurusan">jurusan</label>
                 <input type="text" class="form-control" id="kelas" name="jurusan" value="<?php echo $row['jurusan']; ?>" required>
             </div>
             <div class="form-group">
-                <label for="no_hp">No HP</label>
-                <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?php echo $row['No_hp']; ?>">
+                <label for="no_hp">No whatsapp</label>
+                <input type="text" class="form-control" id="no_whatsapp" name="no_whatsapp" value="<?php echo $row['no_whatsapp']; ?>">
             </div>
             <div class="form-group">
                 <label for="alamat">Alamat</label>
-                <textarea class="form-control" id="alamat" name="alamat"><?php echo $row['Alamat']; ?></textarea>
+                <textarea class="form-control" id="alamat" name="alamat"><?php echo $row['alamat']; ?></textarea>
             </div>
             <button type="submit" name="update" class="btn btn-primary">Update</button>
         </form>

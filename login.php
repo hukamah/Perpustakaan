@@ -2,6 +2,16 @@
 session_start();
 include 'koneksi.php';
 
+// Ambil background untuk halaman login
+$sql = "SELECT gambar FROM background WHERE halaman = 'login' ORDER BY id DESC LIMIT 1";
+$result = $koneksi->query($sql);
+
+if ($result && $row = $result->fetch_assoc()) {
+    $bg_login = "upload/background/" . $row['gambar'];
+} else {
+    $bg_login = "upload/background/default.jpg"; // fallback jika belum ada
+}
+
 // Jika sudah login, langsung alihkan sesuai role
 if (isset($_SESSION['username']) && isset($_SESSION['roles'])) {
     if ($_SESSION['roles'] === 'admin') {
@@ -14,9 +24,10 @@ if (isset($_SESSION['username']) && isset($_SESSION['roles'])) {
 
 $error = '';
 
+// Proses login
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
-    $password = md5($_POST['password']); // Tetap pakai md5 sesuai database kamu
+    $password = $_POST['password']; // TANPA md5
 
     $stmt = $koneksi->prepare("SELECT * FROM pengguna WHERE username = ? AND password = ?");
     $stmt->bind_param('ss', $username, $password);
@@ -54,17 +65,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Custom CSS -->
     <link href="style.css" rel="stylesheet"> 
-    <link rel="icon" href="img/gambar.png" type="image/png">
-    <title>Login - Sistem Informasi Perpustakaan</title>
+    <link rel="icon" href="img/Gambar.png" type="image/png">
+    <title>Perpustakaan SMK Bina Bangsa</title>
 </head>
 <style>
-    
 /* css login */
 /* Mengatur background halaman login */
 body.login-page {
-    background-image: url('img/smkbb.jpg'); 
+    background: url('<?php echo $bg_login; ?>') no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,20 +114,19 @@ body.login-page {
     color: #000;
 }
 
-/* Mengatur tampilan label agar berwarna hitam dan rata kiri */
+/* Label */
 .card.login-form label {
-    color: #000; /* Warna hitam untuk label */
+    color: #000;
     display: block;
     margin-bottom: 5px;
     text-align: left;
-    
 }
 
-/* Mengatur tampilan input teks agar berwarna hitam dan rata kiri */
+/* Input */
 .form-control {
-    color: #000; /* Warna hitam untuk teks input */
+    color: #000;
     background-color: #fff;
-    text-align: left; /* Meratakan teks ke kiri */
+    text-align: left;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -127,7 +135,7 @@ body.login-page {
     box-sizing: border-box;
 }
 
-/* Tombol login utama */
+/* Tombol login */
 .btn-primary {
     width: 100%;
     padding: 10px;
@@ -143,7 +151,7 @@ body.login-page {
     background-color: rgb(219, 9, 9);
 }
 
-/* Checkbox dan teks di sebelahnya */
+/* Checkbox */
 .form-check {
     display: flex;
     align-items: center;
@@ -158,7 +166,6 @@ body.login-page {
 .form-check label {
     color: red; 
 }
-
 </style>
 <body class="login-page">
     <div class="container">
@@ -189,3 +196,4 @@ body.login-page {
     </div>
 </body>
 </html>
+                

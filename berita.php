@@ -1,10 +1,7 @@
 <?php
-include 'koneksi.php';
+include 'cek_auth.php';     // Panggil pertama agar session dimulai sebelum ada output
+include 'koneksi.php'; 
 include 'sidebar.php';
-session_start();
-if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
-    echo "Anda tidak berhak mengakses halaman ini.";
-    exit; }
 $sql = "SELECT * FROM berita ORDER BY tanggal DESC";
 $result = mysqli_query($koneksi, $sql);
 ?>

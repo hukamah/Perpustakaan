@@ -96,7 +96,7 @@ $result_siswa = mysqli_query($koneksi, $query_siswa);
                         <select name="id_siswa" class="form-control" required>
                             <option value="">Pilih Siswa</option>
                             <?php while ($row_siswa = mysqli_fetch_assoc($result_siswa)) { ?>
-                                <option value="<?= $row_siswa['id_siswa']; ?>"><?= $row_siswa['Nama']; ?> (<?= $row_siswa['id_siswa']; ?>)</option>
+                                <option value="<?= $row_siswa['id_siswa']; ?>"><?= $row_siswa['nama']; ?> (<?= $row_siswa['id_siswa']; ?>)</option>
                             <?php } ?>
                         </select>
                     </div>

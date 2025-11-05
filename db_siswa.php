@@ -1,8 +1,8 @@
-<?php
-include 'cek_siswa.php';
-include 'koneksi.php';
-include 'sidebar_siswa.php'; // Sidebar khusus siswa
-?>
+<?php 
+include 'cek_siswa.php'; 
+include 'koneksi.php'; 
+include 'sidebar_siswa.php'; // Sidebar khusus siswa 
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,24 +42,26 @@ include 'sidebar_siswa.php'; // Sidebar khusus siswa
         </div>
 
         <div class="row">
+            <!-- Card Peminjaman Buku (Hijau) -->
             <div class="col-md-6 mb-3">
-                <div class="card h-100 shadow-sm text-center">
+                <div class="card h-100 shadow-sm text-center bg-primary text-white">
                     <div class="card-body">
-                        <i class="bi bi-book text-primary"></i>
+                        <i class="bi bi-book"></i>
                         <h5 class="card-title mt-3">Data Peminjaman Buku</h5>
                         <p class="card-text">Cek status peminjaman buku Anda.</p>
-                        <a href="daftar_peminjaman_siswa.php" class="btn btn-primary">Lihat Peminjaman</a>
+                        <a href="daftar_peminjaman_siswa.php" class="btn btn-light text-dark fw-bold">Lihat Peminjaman</a>
                     </div>
                 </div>
             </div>
 
+            <!-- Card Pengembalian Buku (Merah) -->
             <div class="col-md-6 mb-3">
-                <div class="card h-100 shadow-sm text-center">
+                <div class="card h-100 shadow-sm text-center bg-danger text-white">
                     <div class="card-body">
-                        <i class="bi bi-arrow-return-left text-success"></i>
+                        <i class="bi bi-arrow-return-left"></i>
                         <h5 class="card-title mt-3">Data Pengembalian Buku</h5>
                         <p class="card-text">Cek status pengembalian buku Anda.</p>
-                        <a href="daftar_pengembalian_siswa.php" class="btn btn-primary">Lihat Pengembalian</a>
+                        <a href="daftar_pengembalian_siswa.php" class="btn btn-light text-dark fw-bold">Lihat Pengembalian</a>
                     </div>
                 </div>
             </div>
